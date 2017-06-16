@@ -1,15 +1,21 @@
 import React from 'react';
-import View from 'react-native';
+import { AppRegistry, View} from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducers from './reducers';   //just by importing the folder, it's implied i want the index file
+import Header from './components/common/Header';
+import LibraryList from './components/LibraryList';
+
+import reducers from './reducers';
 
 const App = () => {
   return (
-    <Provider store={createStore(reducers)}>
-      <View />
-    </Provider>
-  )
+      <Provider store={createStore(reducers)}>
+        <View style={{flex: 1}}>
+          <Header headerText="Tech Stack" />
+          <LibraryList />
+        </View>
+      </Provider>
+  );
 };
 
-export default App;
+AppRegistry.registerComponent('tech_stack', () => App);
